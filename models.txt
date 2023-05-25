@@ -18,6 +18,7 @@ class Variation:
     status = Bool(default=True)
 
 
+
 class Tag:
     name = Char(max_length=255)
     status = Bool(default=True)
