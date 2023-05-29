@@ -1,5 +1,4 @@
 # Brand
-
 class Brand:
     name = Char(max_length=255)
     status = Bool(default=True)
@@ -12,17 +11,13 @@ Class ProductCategory:
     image = Image(upload_to='product_category')
     status = Bool(default=True)
 
-
 class Variation:
     name = Char(max_length=255)
     status = Bool(default=True)
 
-
-
 class Tag:
     name = Char(max_length=255)
     status = Bool(default=True)
-
 
 class Product:
     product_category = FK(ProductCategory, ondelete=CASCADE)
@@ -83,13 +78,11 @@ class WebsiteSetting:
     phone = Char(max_length=12)
     address = TextField()
 
-
 class Slider:
     heading = Char(max_length=20)
     sub_heading = Char(max_length=20)
     image = ImageField(upload_to='slider')
     status = BooleanField(default=True)
-
 
 class Blog:
     title = Char(max_length=255)
@@ -99,7 +92,6 @@ class Blog:
     date_time = DateTime()
     image = ImageField(upload_to='blog')
     status = BooleanField(default=True)
-
 
 class FAQ:
     question = Char(max_length=255)
