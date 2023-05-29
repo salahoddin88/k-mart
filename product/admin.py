@@ -1,7 +1,24 @@
-from django.contrib import admin
+from django.contrib import admin, messages
 from product.models import Product, ProductCategory, ProductTag, ProductVariation, ProductImage
 
 
+def active_status(modelAdmin, request, queryset):
+    """ messages.success -> shows green alert """
+    """ messages.error -> shows red alert """
+    """ messages.warning -> shows brown alert """
+    """ messages.info -> shows green alert """
+    try:
+        queryset.update(status=True)
+        messages.success(request, 'Selected record(s) marked as active')
+    except Exception as e:
+        messages.error(request, str(e))
+
+def inactive_status(modelAdmin, request, queryset):
+    try:
+        queryset.update(status=False)
+        messages.success(request, 'Selected record(s) marked as active')
+    except Exception as e:
+        messages.error(request, str(e))
 
 # class ProductImagesInline(admin.TabularInline):
 #""" Display Child Form in table format  """
@@ -17,6 +34,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_filter = ["product_category"]
     search_fields = ["name"]
     inlines = (ProductImagesInline, )
+    actions = (active_status, inactive_status)
 
 
 admin.site.register(Product, ProductAdmin)
