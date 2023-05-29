@@ -24,7 +24,7 @@ class Slider(models.Model):
 
 class Blog(models.Model):
     title = models.CharField(max_length=255)
-    slug = models.SlugField("title")
+    slug = models.SlugField()
     description = models.TextField()
     author = models.CharField(max_length=255)
     date_time = models.DateTimeField(auto_now=True)
@@ -32,19 +32,18 @@ class Blog(models.Model):
     status = models.BooleanField(default=True)
 
     def __str__(self):
-        return f"{self.title}{self.auther}"
-    
-    
+        return f"{self.title}"
+
+
 class FAQs(models.Model):
     question=models.CharField(max_length=255)
     answer=models.TextField()
     status = models.BooleanField(default=True)
-    
+
     def __str__(self):
         return self.question
-    
+
     class Meta:
         verbose_name  = "FAQ"
         verbose_name_plural  = "FAQs"
-        
-    
+

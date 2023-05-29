@@ -1,6 +1,6 @@
 from django.contrib import admin
 from product.models import Product, ProductCategory, ProductTag, ProductVariation, ProductImage
-    
+
 
 
 # class ProductImagesInline(admin.TabularInline):
@@ -12,6 +12,7 @@ class ProductImagesInline(admin.StackedInline):
 
 
 class ProductAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug' : ('name', )}
     list_display = ["name", "product_category", "price", "status"]
     list_filter = ["product_category"]
     search_fields = ["name"]
@@ -46,5 +47,5 @@ class ProductTagAdmin(admin.ModelAdmin):
 
 
 admin.site.register(ProductTag, ProductTagAdmin)
-    
-    
+
+
