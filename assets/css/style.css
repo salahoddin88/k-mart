@@ -44,12 +44,12 @@
 	- popular cater
 	- inner pages
 	  - pagination
-	- checkout   
+	- checkout
 	  - myaccount
-	- login 
-	- faq 
-	
-		
+	- login
+	- faq
+
+
 ---------------------------------------------------------------------*/
 
 
@@ -65,10 +65,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&amp;family=Rubik:wght@300;400;500;600;700;800;900&amp;display=swap');
 
 /*****----------------------------------------
-     1) font-family: 'Noto Serif', serif;   
-     2) font-family: 'Roboto', sans-serif; 
-     3) font-family: 'Rajdhani', sans-serif;  
-     4) font-family: 'Poppins', sans-serif; 
+     1) font-family: 'Noto Serif', serif;
+     2) font-family: 'Roboto', sans-serif;
+     3) font-family: 'Rajdhani', sans-serif;
+     4) font-family: 'Poppins', sans-serif;
 ----------------------------------------*****/
 
 /*---------------------------------------------------------------------
@@ -562,7 +562,7 @@ header {}
 }
 
 .top_search_bar .field {
-	width: 100%;
+	width: 133%;
 	float: left;
 }
 
@@ -3306,7 +3306,7 @@ ul.social_icon li a:focus {
 }
 
 /*===================================----------------------------------
-    inner pages and all page section 
+    inner pages and all page section
 ----------------------------------===================================*/
 
 /*---------------------------------------------------------------------
@@ -7471,7 +7471,7 @@ ul.pagination li.page-item.active .page-link {
 }
 
 /*---------------------------------------------------------------------
-    contact 
+    contact
 ---------------------------------------------------------------------*/
 
 .contact_form {

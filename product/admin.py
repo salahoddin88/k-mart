@@ -41,7 +41,7 @@ admin.site.register(Product, ProductAdmin)
 
 
 class ProductCategoryAdmin(admin.ModelAdmin):
-    list_display = ["name", "slug", "status"]
+    list_display = ["name", "slug", "status", "show_on_homepage"]
     list_filter = ["name"]
     search_fields = ["name"]
 

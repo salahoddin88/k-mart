@@ -9,6 +9,7 @@ class ProductCategory(models.Model):
     slug = models.SlugField(max_length=255, null=True, blank=True)
     image = models.ImageField(upload_to='product_categories')
     status = models.BooleanField(default=True)
+    show_on_homepage = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name

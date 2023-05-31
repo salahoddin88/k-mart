@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1"/>
       <meta name="viewport" content="initial-scale=1, maximum-scale=1"/>
       <!-- site metas -->
-      <title>K-mart</title>
+      <title>{{ website_setting.title }}</title>
       <meta name="keywords" content=""/>
       <meta name="description" content=""/>
       <meta name="author" content=""/>
@@ -72,7 +72,9 @@
                   <div class="col-lg-3">
                      <div class="full">
                         <div class="center-desk">
-                           <div class="logo"> <a href="index-2.html"><img src="{% static 'images/logo.png' %}" alt="#"/></a> </div>
+                           <div class="logo"> <a href="index-2.html">
+                              <img src="{{ website_setting.logo.url }}" alt="#"/></a>
+                           </div>
                         </div>
                      </div>
                   </div>
@@ -114,9 +116,10 @@
                                         <span class="caret"><i class="fa fa-angle-down" aria-hidden="true"></i></span>
                                     </a>
                                     <ul class="sub-down simple-down">
-                                       <li><a href="#"><i class="fa fa-angle-right"></i> Shoes</a></li>
-                                       <li><a href="#"><i class="fa fa-angle-right"></i> T-Shirt</a></li>
-                                       <li><a href="#"><i class="fa fa-angle-right"></i> Jacket</a></li>
+                                       {% for navigation_category in navigation_categories %}
+                                          <li><a href="#"><i class="fa fa-angle-right"></i> {{ navigation_category.name }}</a></li>
+                                       {% endfor %}
+
                                     </ul>
                                  </li>
                                  <li class="">
@@ -158,9 +161,9 @@
                         <h3>Contact Info</h3>
                         <div class="footer_info_inner">
                            <ul class="bottom_cont">
-                              <li><i class="fa fa-map-marker" aria-hidden="true"></i> 8386 Keyshawn Springs Suite 214</li>
-                              <li><i class="fa fa-phone" aria-hidden="true"></i> <a href="tel:9876543210">9876 543 210</a></li>
-                              <li><i class="fa fa-envelope" aria-hidden="true"></i> <a href="">demo@example.com</a></li>
+                              <li><i class="fa fa-map-marker" aria-hidden="true"></i> {{ website_setting.address }}</li>
+                              <li><i class="fa fa-phone" aria-hidden="true"></i> <a href="tel:9876543210">{{ website_setting.phone }}</a></li>
+                              <li><i class="fa fa-envelope" aria-hidden="true"></i> <a href="">{{ website_setting.email }}</a></li>
                            </ul>
                            <ul class="social_icon">
                               <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
