@@ -108,7 +108,7 @@
                            <nav class="main-menu">
                               <ul class="menu-area-main">
                                  <li class="active">
-                                    <a href="#">Home</a>
+                                    <a href="{% url 'home_page' %}">Home</a>
                                  </li>
                                  <li><a href="#">About us</a></li>
                                  <li>
@@ -117,7 +117,7 @@
                                     </a>
                                     <ul class="sub-down simple-down">
                                        {% for navigation_category in navigation_categories %}
-                                          <li><a href="#"><i class="fa fa-angle-right"></i> {{ navigation_category.name }}</a></li>
+                                          <li><a href="{% url 'product_listing' product_category_slug=navigation_category.slug %}"><i class="fa fa-angle-right"></i> {{ navigation_category.name }}</a></li>
                                        {% endfor %}
 
                                     </ul>
