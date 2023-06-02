@@ -61,3 +61,4 @@ class ProductDetails(View):
 
 
 
+

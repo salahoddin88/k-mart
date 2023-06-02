@@ -56,7 +56,18 @@
                      <div class="full">
                         <div class="float-right">
                            <ul>
-                              <li><a href="login_register.html">Login &amp; register</a></li>
+                              {% if request.user.is_authenticated %}
+                              <li>
+                                <a href="#">Profile</a>
+                              </li>
+                              <li class="ml-5">
+                                <a href="{% url 'logout_view' %}">Logout</a>
+                              </li>
+                               {% else %}
+                                 <li>
+                                    <a href="{% url 'LoginView' %}">Login &amp; register</a>
+                                 </li>
+                              {% endif %}
                            </ul>
                         </div>
                      </div>
