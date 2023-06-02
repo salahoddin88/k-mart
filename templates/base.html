@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1"/>
       <meta name="viewport" content="initial-scale=1, maximum-scale=1"/>
       <!-- site metas -->
-      <title>{{ website_setting.title }}</title>
+      <title>{{ global_website_setting.title }}</title>
       <meta name="keywords" content=""/>
       <meta name="description" content=""/>
       <meta name="author" content=""/>
@@ -73,7 +73,7 @@
                      <div class="full">
                         <div class="center-desk">
                            <div class="logo"> <a href="index-2.html">
-                              <img src="{{ website_setting.logo.url }}" alt="#"/></a>
+                              <img src="{{ global_website_setting.logo.url }}" alt="#"/></a>
                            </div>
                         </div>
                      </div>
@@ -116,8 +116,8 @@
                                         <span class="caret"><i class="fa fa-angle-down" aria-hidden="true"></i></span>
                                     </a>
                                     <ul class="sub-down simple-down">
-                                       {% for navigation_category in navigation_categories %}
-                                          <li><a href="{% url 'product_listing' product_category_slug=navigation_category.slug %}"><i class="fa fa-angle-right"></i> {{ navigation_category.name }}</a></li>
+                                       {% for navigation_product_category in navigation_product_categories %}
+                                          <li><a href="{% url 'product_listing' product_category_slug=navigation_product_category.slug %}"><i class="fa fa-angle-right"></i> {{ navigation_product_category.name }}</a></li>
                                        {% endfor %}
 
                                     </ul>
@@ -161,9 +161,9 @@
                         <h3>Contact Info</h3>
                         <div class="footer_info_inner">
                            <ul class="bottom_cont">
-                              <li><i class="fa fa-map-marker" aria-hidden="true"></i> {{ website_setting.address }}</li>
-                              <li><i class="fa fa-phone" aria-hidden="true"></i> <a href="tel:9876543210">{{ website_setting.phone }}</a></li>
-                              <li><i class="fa fa-envelope" aria-hidden="true"></i> <a href="">{{ website_setting.email }}</a></li>
+                              <li><i class="fa fa-map-marker" aria-hidden="true"></i> {{ global_website_setting.address }}</li>
+                              <li><i class="fa fa-phone" aria-hidden="true"></i> <a href="tel:9876543210">{{ global_website_setting.phone }}</a></li>
+                              <li><i class="fa fa-envelope" aria-hidden="true"></i> <a href="">{{ global_website_setting.email }}</a></li>
                            </ul>
                            <ul class="social_icon">
                               <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>

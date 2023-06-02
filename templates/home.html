@@ -145,8 +145,10 @@
                         <ul>
                            {% for product_category in product_categories %}
                               <li>
-                                 <span class="product_img"><img class="img-responsive" src="{{ product_category.image.url }}" alt="#"/></span>
-                                 <span class="product_head">{{ product_category.name }}</span>
+                                 <a href="{% url 'product_listing' product_category_slug=product_category.slug %}">
+                                    <span class="product_img"><img class="img-responsive" src="{{ product_category.image.url }}" alt="#"/></span>
+                                    <span class="product_head">{{ product_category.name }}</span>
+                                 </a>
                               </li>
                            {% endfor %}
                         </ul>
@@ -187,10 +189,9 @@
                                                    <div class="product_cont">
                                                       {% comment %} <p class="info_pr">Latest Fashion</p> {% endcomment %}
                                                       <h3>{{ fashion_product.name }}</h3>
-                                                      <p class="price_tag">$25 <span class="old_price">$30</span></p>
+                                                      <p class="price_tag">₹{{ fashion_product.price }}</p>
                                                       <div class="bottom_bt_pr">
-                                                         <a class="bt_pro" href="shopping_cart.html">Add to Card</a>
-                                                         <a class="bt_pro" href="product_detail.html">Buy Now</a>
+                                                         <a class="bt_pro" href="{% url 'ProductDetails' product_slug=fashion_product.slug %}">View Product</a>
                                                       </div>
                                                    </div>
                                                 </div>
@@ -211,10 +212,9 @@
                                                    <div class="product_cont">
                                                       {% comment %} <p class="info_pr">Latest Fashion</p> {% endcomment %}
                                                       <h3>{{ fashion_product.name }}</h3>
-                                                      <p class="price_tag">$25 <span class="old_price">$30</span></p>
+                                                      <p class="price_tag">₹{{ fashion_product.price }}</p>
                                                       <div class="bottom_bt_pr">
-                                                         <a class="bt_pro" href="shopping_cart.html">Add to Card</a>
-                                                         <a class="bt_pro" href="product_detail.html">Buy Now</a>
+                                                         <a class="bt_pro" href="{% url 'ProductDetails' product_slug=fashion_product.slug %}">View Product</a>
                                                       </div>
                                                    </div>
                                                 </div>
