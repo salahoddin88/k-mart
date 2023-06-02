@@ -1,11 +1,10 @@
-from django import forms
 from django.contrib.auth.forms import AuthenticationForm
+from django import forms
 
 
 class UserAuthenticationForm(AuthenticationForm):
-    class Meta:
-        widgets = {
-            'username': forms.TextInput(attrs={'class': 'input-class'}),
-            'password': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password'})
-        }
 
+    def __init__(self, *args, **kwargs):
+        super(UserAuthenticationForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'
