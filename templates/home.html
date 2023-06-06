@@ -184,7 +184,9 @@
                                                 <div class="product_blog">
                                                    <div class="product_img">
                                                       <label class="product_label new_pro">{{ fashion_product.product_category.name }}</label>
-                                                      <img style="height:350px" src="{{ fashion_product.cover_image.url }}" alt="#"/>
+                                                      <div class="image-container">
+                                                         <img class="fit-image" src="{{ fashion_product.cover_image.url }}" alt="#"/>
+                                                      </div>
                                                    </div>
                                                    <div class="product_cont">
                                                       {% comment %} <p class="info_pr">Latest Fashion</p> {% endcomment %}
@@ -207,7 +209,7 @@
                                                 <div class="product_blog">
                                                    <div class="product_img">
                                                       <label class="product_label new_pro">{{ fashion_product.product_category.name }}</label>
-                                                      <img style="height:350px" src="{{ fashion_product.cover_image.url }}" alt="#"/>
+                                                      <img class="fit-image" src="{{ fashion_product.cover_image.url }}" alt="#"/>
                                                    </div>
                                                    <div class="product_cont">
                                                       {% comment %} <p class="info_pr">Latest Fashion</p> {% endcomment %}
@@ -257,7 +259,7 @@
                <div class="col-md-12">
                   <div class="full testimonial_slider">
                      <div class="main_heading">
-                        <h2><span class="style_head">Client <strong>Say&#39;s</strong></span> FUTURE ASSIGNMENT</h2>
+                        <h2><span class="style_head">Client <strong>Say&#39;s</strong></span></h2>
                      </div>
                      <div id="testimonial_s" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
@@ -268,7 +270,7 @@
                         <div class="carousel-inner">
                            <div class="carousel-item text-center active">
                               <div class="img-box">
-                                 <img class="d-block rounded-circle" src="images/cl1.png" alt="#"/>
+                                 <img class="d-block rounded-circle" src="{% static 'images/cl1.png' %}" alt="#"/>
                               </div>
                               <p>&#34;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accus antium<br/>doloremque laud antium
                                  totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et<br/>quasi architectobeatae vitae dicta sunt explicabo.
@@ -277,7 +279,7 @@
                            </div>
                            <div class="carousel-item text-center">
                               <div class="img-box">
-                                 <img class="d-block rounded-circle" src="images/cl2.png" alt="#"/>
+                                 <img class="d-block rounded-circle" src="{% static 'images/cl2.png' %}" alt="#"/>
                               </div>
                               <p>&#34;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accus antium<br/>doloremque laud antium
                                  totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et<br/>quasi architectobeatae vitae dicta sunt explicabo.
@@ -286,7 +288,7 @@
                            </div>
                            <div class="carousel-item text-center">
                               <div class="img-box">
-                                 <img class="d-block rounded-circle" src="images/cl3.png" alt="#"/>
+                                 <img class="d-block rounded-circle" src="{% static 'images/cl3.png' %}" alt="#"/>
                               </div>
                               <p>&#34;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accus antium<br/>doloremque laud antium
                                  totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et<br/>quasi architectobeatae vitae dicta sunt explicabo.
@@ -316,7 +318,7 @@
                <div class="col-md-6 blog_layout margin_bottom_30">
                   <div class="blog_inner blog_list">
                      <div class="blog_featured_img">
-                        <img class="img-responsive" src="images/blog1.png" alt="#"/>
+                        <img class="img-responsive" src="{% static 'images/blog1.png' %}" alt="#"/>
                         <div class="post_information">
                            <div class="post_info_inner">
                               <ul>
@@ -355,7 +357,7 @@
                <div class="col-md-6 blog_layout">
                   <div class="blog_inner blog_list">
                      <div class="blog_featured_img">
-                        <img class="img-responsive" src="images/blog2.png" alt="#"/>
+                        <img class="img-responsive" src="{% static 'images/blog2.png' %}" alt="#"/>
                         <div class="post_information">
                            <div class="post_info_inner">
                               <ul>

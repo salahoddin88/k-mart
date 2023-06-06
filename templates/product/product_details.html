@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
 
  <!-- inner page banner -->
     <div class="section inner_banner">
@@ -26,19 +27,19 @@
             <div class="col-xl-6 col-lg-6 col-md-6">
                 <div id="carousel-example-1" class="single-product-slider carousel slide" data-ride="carousel">
                     <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item active"> <img class="d-block w-100" src="{{ product.cover_image.url }}" alt="First slide"/> </div>
+                    <div class="carousel-item active"> <img class="d-block w-100 fit-image-600" src="{{ product.cover_image.url }}" alt="First slide"/> </div>
                     {% for product_image in product.ProductImage.all %}
-                        <div class="carousel-item"> <img class="d-block w-100" src="{{ product_image.image.url }}" alt="Second slide"/> </div>
+                        <div class="carousel-item"> <img class="d-block w-100 fit-image-600" src="{{ product_image.image.url }}" alt="Second slide"/> </div>
                     {% endfor %}
                     </div>
                     <a class="carousel-control-prev" href="#carousel-example-1" role="button" data-slide="prev"> <i class="fa fa-angle-left" aria-hidden="true"></i> <span class="sr-only">Previous</span> </a>
                     <a class="carousel-control-next" href="#carousel-example-1" role="button" data-slide="next"> <i class="fa fa-angle-right" aria-hidden="true"></i> <span class="sr-only">Next</span> </a>
                     <ol class="carousel-indicators">
                     <li data-target="#carousel-example-1" data-slide-to="0" class="active">
-                        <img class="d-block w-100 img-fluid" src="{{ product.cover_image.url }}" alt=""/>
+                        <img class="d-block w-100 img-fluid fit-image-100" src="{{ product.cover_image.url }}" alt=""/>
                     </li>
                     {% for product_image in product.ProductImage.all %}
-                        <li data-target="#carousel-example-1" data-slide-to="1"><img class="d-block w-100 img-fluid" src="{{ product_image.image.url }}" alt=""/></li>
+                        <li data-target="#carousel-example-1" data-slide-to="1"><img class="d-block w-100 img-fluid fit-image-100" src="{{ product_image.image.url }}" alt=""/></li>
                     {% endfor %}
 
                     </ol>
@@ -106,7 +107,7 @@
                                                 <div class="product-item-info">
                                                     <div class="product-item-photo">
                                                     <div class="item-gallery">
-                                                        <a href="{% url 'ProductDetails' product_slug=similar_product.slug %}"> <img src="{{ similar_product.cover_image.url }}" alt=""/> </a>
+                                                        <a href="{% url 'ProductDetails' product_slug=similar_product.slug %}"> <img class="fit-image" src="{{ similar_product.cover_image.url }}" alt=""/> </a>
                                                         {% comment %} <div class="bot-line-new"> <span>New</span> </div> {% endcomment %}
 
                                                     </div>
@@ -136,7 +137,7 @@
                             <div class="commant-text row">
                                 <div class="col-lg-2 col-md-2 col-sm-4">
                                 <div class="profile">
-                                    <img class="img-responsive" src="images/cl1.png" alt="#"/>
+                                    <img class="img-responsive" src="{% static 'images/cl1.png' %}" alt="#"/>
                                 </div>
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8">
@@ -155,7 +156,7 @@
                             <div class="commant-text row">
                                 <div class="col-lg-2 col-md-2 col-sm-4">
                                 <div class="profile">
-                                    <img class="img-responsive" src="images/cl2.png" alt="#"/>
+                                    <img class="img-responsive" src="{% static 'images/cl2.png' %}" alt="#"/>
                                 </div>
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8">
@@ -174,7 +175,7 @@
                             <div class="commant-text row">
                                 <div class="col-lg-2 col-md-2 col-sm-4">
                                 <div class="profile">
-                                    <img class="img-responsive" src="images/cl3.png" alt="#"/>
+                                    <img class="img-responsive" src="{% static 'images/cl3.png' %}" alt="#"/>
                                 </div>
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8">
@@ -193,7 +194,7 @@
                             <div class="commant-text row">
                                 <div class="col-lg-2 col-md-2 col-sm-4">
                                 <div class="profile">
-                                    <img class="img-responsive" src="images/cl1.png" alt="#"/>
+                                    <img class="img-responsive" src="{% static 'images/cl1.png' %}" alt="#"/>
                                 </div>
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-8">

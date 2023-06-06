@@ -48,7 +48,7 @@
                                                 <div class="product-item-info">
                                                     <div class="product-item-photo">
                                                         <div class="item-gallery">
-                                                            <a href="{% url 'ProductDetails' product_slug=product.slug %}"> <img class="img-40perc" src="{{ product.cover_image.url }}" alt="" /> </a>
+                                                            <a href="{% url 'ProductDetails' product_slug=product.slug %}"> <img class="fit-image" src="{{ product.cover_image.url }}" alt="" /> </a>
                                                             {% comment %} <div class="bot-line-new"> <span>New</span> </div> {% endcomment %}
                                                         </div>
                                                     </div>
