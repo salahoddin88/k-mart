@@ -18,7 +18,7 @@ class Order(models.Model):
     address = models.TextField()
     mobile = models.CharField(max_length=12)
     payment = models.BooleanField(default=False)
-    status = models.CharField(max_length=50, choices=STATUS_CHOICE)
+    status = models.CharField(max_length=50, choices=STATUS_CHOICE, default="Pending")
 
     def __str__(self):
         return str(self.id)

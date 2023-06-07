@@ -54,30 +54,38 @@
                     <div class="price-box-bar">
                         <div class="price-box"> <span>₹{{ product.price }}</span> </div>
                     </div>
-                    <ul class="clearfix">
-                    <li>
-                        <div class="half_blog">
-                            <div class="form-group">
-                                <label class="size-label">Size</label>
-                                <select class="wide">
-                                    {% for variation in product.variation.all %}
-                                        <option value="{{ variation.id }}">{{ variation.name }}</option>
-                                    {% endfor %}
+                    <form method="POST" action="{% url 'add_to_cart_view' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                        <ul class="clearfix">
+                            <li>
+                                <div class="half_blog">
+                                    <div class="form-group">
+                                        <label class="size-label">Size</label>
+                                        <select class="wide" name="variation_id">
+                                            {% for variation in product.variation.all %}
+                                                <option value="{{ variation.id }}">{{ variation.name }}</option>
+                                            {% endfor %}
 
-                                </select>
-                            </div>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="half_blog">
+                                    <div class="form-group quantity-box">
+                                        <label class="control-label">Quantity</label>
+                                        <input class="form-control" type="number" value="1" min="0" max="5" name="quantity"/>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="add-to-btn">
+                            {% if request.user.is_authenticated %}
+                                <div class="add-comp"> <button type="submit" class="hover-btn btn btn-primary"><span class="icon icon-cart"></span> Add to cart</button> </div>
+                            {% else %}
+                                <div class="add-comp"> <a class="hover-btn" href="{% url 'LoginView' %}"><span class="icon icon-cart"></span> Login to add to cart</a> </div>
+                            {% endif %}
                         </div>
-                        <div class="half_blog">
-                            <div class="form-group quantity-box">
-                                <label class="control-label">Quantity</label>
-                                <input class="form-control" type="number" value="0" min="0" max="20"/>
-                            </div>
-                        </div>
-                    </li>
-                    </ul>
-                    <div class="add-to-btn">
-                        <div class="add-comp"> <a class="hover-btn" href="#"><span class="icon icon-cart"></span> Add to cart</a> </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

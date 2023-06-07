@@ -147,7 +147,7 @@
                         <div class="right_cart_section">
                            <ul class="cart_icons">
                               <li><a href="shop-cart.html"><i class="fa fa-heart-o"></i> 0</a></li>
-                              <li><a href="shop-cart.html"><i class="fa fa-shopping-bag"></i>0</a></li>
+                              <li><a href="{% url 'my_cart_view' %}"><i class="fa fa-shopping-bag"></i>{{ global_cart_quantity }}</a></li>
                            </ul>
                         </div>
                      </div>
