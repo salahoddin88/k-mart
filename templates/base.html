@@ -58,7 +58,7 @@
                            <ul>
                               {% if request.user.is_authenticated %}
                               <li>
-                                <a href="#">Profile</a>
+                                <a href="{% url 'ProfileView' %}">Profile</a>
                               </li>
                               <li class="ml-5">
                                 <a href="{% url 'logout_view' %}">Logout</a>

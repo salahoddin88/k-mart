@@ -17,7 +17,10 @@ class LoginView(View):
     template_name = 'accounts/login.html'
 
     def get(self, request):
-        form = self.form_class()
+        next_url = request.GET.get('next')
+        form = self.form_class(initial={
+            'next_url' : next_url
+        })
         context ={
             'form' : form
         }
@@ -27,6 +30,9 @@ class LoginView(View):
         form = self.form_class(data=request.POST)
         if form.is_valid():
             login(request, form.get_user())
+            next_url = form.cleaned_data.get('next_url')
+            if next_url:
+                return redirect(next_url)
             return redirect('home_page')
         context ={
             'form' : form,

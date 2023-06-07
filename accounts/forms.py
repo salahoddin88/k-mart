@@ -6,6 +6,7 @@ from user_profile.models import UserProfile
 
 class UserAuthenticationForm(AuthenticationForm):
     """ Extending Django's AuthenticationForm form to add form-control class """
+    next_url = forms.CharField(widget= forms.HiddenInput(), required=False)
 
     def __init__(self, *args, **kwargs):
         super(UserAuthenticationForm, self).__init__(*args, **kwargs)
