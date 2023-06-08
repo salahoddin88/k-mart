@@ -3,6 +3,8 @@ from .models import Cart
 from django.contrib.auth.decorators import login_required
 from product.models import Product
 from .forms import PlaceOrderForm
+from order.models import Order, OrderDetails
+from datetime import datetime
 
 
 @login_required
@@ -69,14 +71,6 @@ def checkout(request):
         'mobile' : request.user.user_profile.mobile,
     }
     form = PlaceOrderForm(request.POST or None, initial=initial)
-    """ Proceed to checkout """
-    if request.method == "POST":
-        """ Form Handling """
-        if form.is_valid():
-            mobile = form.clean_data.get('mobile')
-            address = form.clean_data.get('address')
-
-
     cart_products = Cart.objects.filter(user=request.user)
     sub_total = 0
     shipping = 50
@@ -84,6 +78,32 @@ def checkout(request):
         cart_product.sub_total = cart_product.product.price * cart_product.quantity
         sub_total = sub_total + cart_product.sub_total
     grand_total = sub_total + shipping
+
+    """ Proceed to checkout """
+    if request.method == "POST":
+        """ Form Handling """
+        if form.is_valid():
+            mobile = form.cleaned_data.get('mobile')
+            address = form.cleaned_data.get('address')
+            order = Order.objects.create(
+                user=request.user,
+                date_time=datetime.now(),
+                address=address,
+                mobile=mobile,
+            )
+            for cart_product in cart_products:
+                """ Processing cart to create order details """
+                OrderDetails.objects.create(
+                    order=order,
+                    product=cart_product.product,
+                    quantity=cart_product.quantity,
+                    price=cart_product.product.price,
+                    variation=cart_product.variation,
+                )
+            cart_products.delete()
+            return redirect('thank_you_view')
+
+
     context = {
         'form' : form,
         'sub_total' : sub_total,
@@ -91,3 +111,7 @@ def checkout(request):
         'grand_total' : grand_total,
     }
     return render(request, 'cart/checkout.html', context)
+
+
+def thank_you_view(request):
+    return render(request, 'cart/thank_you.html')

@@ -92,12 +92,12 @@
                   <div class="col-lg-9">
                      <div class="search_style">
                         <div class="top_search_bar">
-                           <form action="#">
+                           <form action="{% url 'product_listing' %}">
                               <fieldset>
                                  <div class="field">
-                                    <input placeholder="Search Product...." type="text"/>
+                                    <input placeholder="Search Product...." type="text" name="search" value="{{request.GET.search}}"/>
                                     <div class="search_catry_bt">
-                                       <button class="submit_search">Search</button>
+                                       <button type="submit" class="submit_search">Search</button>
                                     </div>
                                  </div>
                               </fieldset>

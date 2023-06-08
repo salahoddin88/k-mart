@@ -35,14 +35,21 @@ def home_page(request):
 #     }
 #     return render(request, 'product/product_listing.html', context)
 
-def product_listing(request, product_category_slug):
+def product_listing(request, product_category_slug=None):
     """ Products with category slug """
-    products = Product.objects.filter(status=True, product_category__slug=product_category_slug) # recomended
+    filters = {
+        'status':True
+    }
+    if request.GET.get('search'):
+        filters['name__icontains'] = request.GET.get('search')
+
+    if product_category_slug:
+        filters['product_category__slug'] = product_category_slug
+    products = Product.objects.filter(**filters) # recomended
     context = {
         'products' : products
     }
     return render(request, 'product/product_listing.html', context)
-
 
 
 class ProductDetails(View):
