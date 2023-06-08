@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'order',
     'payment',
     'product',
+    'rest_framework',
+    'rest_framework.authtoken',
     'user_profile',
     'django.contrib.admin',
     'django.contrib.auth',
