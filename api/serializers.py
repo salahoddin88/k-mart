@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from product.models import ProductCategory
+from product.models import (ProductCategory, Product, ProductImage)
+from cart.models import Cart
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -19,7 +20,6 @@ class UserSerializer(serializers.ModelSerializer):
                 'write_only' : True
             }
         }
-
 
     def create(self, validated_data):
         """ Override model's serializers create(POST) method """
@@ -51,7 +51,6 @@ class UserSerializer(serializers.ModelSerializer):
         return instance
 
 
-
 class ProductCategorySerializer(serializers.ModelSerializer):
     """ Serializer for product category """
     class Meta:
@@ -61,3 +60,49 @@ class ProductCategorySerializer(serializers.ModelSerializer):
             'slug',
             'image'
         ]
+
+
+class ProductImagesSerializer(serializers.ModelSerializer):
+    """ Product Multiple images Serializer class for Product Serializer """
+    class Meta:
+        model = ProductImage
+        fields = ['image']
+
+
+class ProductSerializer(serializers.ModelSerializer):
+    """ Product Model Serializer """
+    ProductImage = ProductImagesSerializer(many=True)
+
+    class Meta:
+        model = Product
+        fields = [
+            'id',
+            'product_category',
+            'brand',
+            'name',
+            'slug',
+            'cover_image',
+            'price',
+            'description',
+            'variation',
+            'tags',
+            'ProductImage',
+        ]
+        depth = 1
+
+
+class CartSerializer(serializers.ModelSerializer):
+    """ Cart model serializer """
+    sub_total = serializers.FloatField(read_only=True)
+
+    class Meta:
+        model = Cart
+        fields = [
+            'id',
+            'product',
+            'variation',
+            'quantity',
+            'sub_total',
+        ]
+        depth = 1
+
