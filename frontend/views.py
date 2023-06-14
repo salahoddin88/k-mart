@@ -7,10 +7,11 @@ from django.views import View
 
 def home_page(request):
     """ Home page of k-mart E-com  """
+    """ selected_related """
     sliders = Slider.objects.filter(status=True)
     product_categories = ProductCategory.objects.filter(status=True, show_on_homepage=True)
-    fashion_products_one = Product.objects.filter(status=True)[0:2]
-    fashion_products_two = Product.objects.filter(status=True)[2:4]
+    fashion_products_one = Product.objects.select_related('product_category').filter(status=True)[0:2]
+    fashion_products_two = Product.objects.select_related('product_category').filter(status=True)[2:4]
     product_tags = ProductTag.objects.filter(status=True)[0:2]
     context = {
         'sliders' : sliders,
@@ -22,6 +23,7 @@ def home_page(request):
     return render(request, 'home.html', context)
 
 """ Products with category id """
+
 # def product_listing(request, category_id):
 #     navigation_categories = ProductCategory.objects.filter(status=True)
 #     website_setting = WebsiteSetting.objects.all().last()
@@ -56,7 +58,7 @@ class ProductDetails(View):
 
     def get(self, request, product_slug):
         try:
-            product = Product.objects.get(slug=product_slug)
+            product = Product.objects.select_related('product_category').prefetch_related('ProductImage').get(slug=product_slug)
             similar_products = Product.objects.filter(status=True, product_category=product.product_category).exclude(id=product.id)
             context = {
                 'product' : product,

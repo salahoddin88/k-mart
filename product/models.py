@@ -46,7 +46,7 @@ class ProductTag(models.Model):
 
 class Product(models.Model):
     """ Product Model class """
-    product_category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE)
+    product_category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE, related_name="product_category")
     brand = models.ForeignKey(Brand, on_delete=models.SET_NULL, null=True, blank=True)
     name = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, null=True, blank=True)
